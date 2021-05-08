@@ -113,9 +113,19 @@ pre        { font-style: italic; font-size: 90%; margin-left: 10%;}
     describe what my project does, then I will provide some obervations, and I
     will conclude with some thoughts about what this means for our society.
    <br/>
+   My base inspiration for the machine learning model came from
+   <a href="https://thecleverprogrammer.com/2020/08/19/hate-speech-detection-model/">
+    this
+   </a>
+   article. Right off the bat, however, I did not think their dataset would 
+    be particularly helpful for the model that I wanted to create. Their data was based
+    off of tweets, and very few of those tweets contained the n-word, which is 
+    important for classifying the type of hate speech that might be found in 
+    Huck Finn...
   </p>
   <p>
    <i>
+    <br/>
     <br/>
     Below, you will find Huck Finn as presented by Project Gutenberg, with the ability to 
     highlight or remove hate speech.
@@ -2064,7 +2074,7 @@ country where you are located before using this eBook.
    </span>
   </p>
   <p>
-   <span class="hate">
+   <span class="noHate">
     “Say, who is you?
    </span>
    <span class="noHate">
@@ -4281,7 +4291,7 @@ country where you are located before using this eBook.
       blanket, and went to work to saw a section of the big bottom log out—big
       enough to let me through.
    </span>
-   <span class="hate">
+   <span class="noHate">
     Well, it was a good long job, but I was
       getting towards the end of it when I heard pap’s gun in the woods.
    </span>
@@ -5131,7 +5141,7 @@ country where you are located before using this eBook.
       down on the ground to bleed; I say ground because it was ground—hard
       packed, and no boards.
    </span>
-   <span class="hate">
+   <span class="noHate">
     Well, next I took an old sack and put a lot
       of big rocks in it—all I could drag—and I started it from the
       pig, and dragged it to the door and through the woods down to the river
@@ -5875,7 +5885,7 @@ country where you are located before using this eBook.
       there all night when I hear a plunkety-plunk, plunkety-plunk, and
       says to myself, horses coming; and next I hear people’s voices.
    </span>
-   <span class="noHate">
+   <span class="hate">
     I got everything into the canoe as quick as I could, and then went
       creeping through the woods to see what I could find out.
    </span>
@@ -6944,7 +6954,7 @@ country where you are located before using this eBook.
     Directly it begun to rain, and it rained like all
       fury, too, and I never see the wind blow so.
    </span>
-   <span class="noHate">
+   <span class="hate">
     It was one of these
       regular summer storms.
    </span>
@@ -7020,7 +7030,7 @@ country where you are located before using this eBook.
       went winding in and out amongst the trees, and sometimes the vines hung so
       thick we had to back away and go some other way.
    </span>
-   <span class="noHate">
+   <span class="hate">
     Well, on every old
       broken-down tree you could see rabbits and snakes and such things; and
       when the island had been overflowed a day or two they got so tame, on
@@ -7276,7 +7286,7 @@ country where you are located before using this eBook.
     We rummaged the clothes we’d got, and found eight dollars in silver
       sewed up in the lining of an old blanket overcoat.
    </span>
-   <span class="hate">
+   <span class="noHate">
     Jim said he
       reckoned the people in that house stole the coat, because if they’d
       a knowed the money was there they wouldn’t a left it.
@@ -9328,7 +9338,7 @@ country where you are located before using this eBook.
   <p>
   </p>
   <p>
-   <span class="noHate">
+   <span class="hate">
     “Yes, I reck’n you are.
    </span>
    <span class="hate">
@@ -11457,7 +11467,7 @@ country where you are located before using this eBook.
       he missed it he’d be in a slave country again and no more show for
       freedom.
    </span>
-   <span class="hate">
+   <span class="noHate">
     Every little while he jumps up and says:
    </span>
   </p>
@@ -12908,7 +12918,7 @@ country where you are located before using this eBook.
    <span class="noHate">
     They all smoked and talked, and I eat and talked.
    </span>
-   <span class="hate">
+   <span class="noHate">
     The
       young women had quilts around them, and their hair down their backs.
    </span>
@@ -13471,7 +13481,7 @@ country where you are located before using this eBook.
     Bob was the oldest and Tom next—tall, beautiful men with very broad
       shoulders and brown faces, and long black hair and black eyes.
    </span>
-   <span class="hate">
+   <span class="noHate">
     They
       dressed in white linen from head to foot, like the old gentleman, and wore
       broad Panama hats.
@@ -19501,7 +19511,7 @@ dont know Arkansaw!”
    </span>
   </p>
   <p>
-   <span class="hate">
+   <span class="noHate">
     And so he went a-mooning on and on, liking to hear himself talk, and every
       little while he fetched in his funeral orgies again, till the duke he
       couldn’t stand it no more; so he writes on a little scrap of paper,
@@ -19655,7 +19665,7 @@ dont know Arkansaw!”
    </span>
   </p>
   <p>
-   <span class="hate">
+   <span class="noHate">
     “I was your father’s friend, and I’m your friend; and I
       warn you as a friend, and an honest one that wants to protect you and keep
       you out of harm and trouble, to turn your backs on that scoundrel and have
@@ -20567,7 +20577,7 @@ dont know Arkansaw!”
    </span>
   </p>
   <p>
-   <span class="noHate">
+   <span class="hate">
     “That we better glide out of this before three in the morning, and
       clip it down the river with what we’ve got.
    </span>
@@ -21010,7 +21020,7 @@ dont know Arkansaw!”
       heads, and says, in a kind of a coarse whisper, “He had a rat!”
       Then he drooped down and glided along the wall again to his place.
    </span>
-   <span class="noHate">
+   <span class="hate">
     You could see it was a great satisfaction to the people, because
       naturally they wanted to know.
    </span>
@@ -21779,7 +21789,7 @@ dont know Arkansaw!”
    </span>
   </p>
   <p>
-   <span class="hate">
+   <span class="noHate">
     “Well, that ’ll answer.
    </span>
    <span class="noHate">
@@ -22691,7 +22701,7 @@ dont know Arkansaw!”
    </span>
   </p>
   <p>
-   <span class="hate">
+   <span class="noHate">
     So him and the new dummy started off; and the king he laughs, and blethers
       out:
    </span>
@@ -26362,7 +26372,7 @@ dont know Arkansaw!”
    </span>
   </p>
   <p>
-   <span class="noHate">
+   <span class="hate">
     “My land!” she says, breaking in and jumping for him, “you
       impudent young rascal, to fool a body so—” and was going to
       hug him, but he fended her off, and says:
@@ -27983,7 +27993,7 @@ dont know Arkansaw!”
       in you at all—what kind of a show would that give him to be a
       hero?
    </span>
-   <span class="hate">
+   <span class="noHate">
     Why, they might as well lend him the key and done with it.
    </span>
    <span class="noHate">
@@ -29176,7 +29186,7 @@ dont know Arkansaw!”
    </span>
   </p>
   <p>
-   <span class="hate">
+   <span class="noHate">
     “Go ’long to your play, and don’t bother me.
    </span>
    <span class="noHate">
@@ -30560,7 +30570,7 @@ dont know Arkansaw!”
    <span class="noHate">
     “That ain’t got nothing to do with it.
    </span>
-   <span class="noHate">
+   <span class="hate">
     The thing for us
       to do is just to do our duty, and not worry about whether anybody
       sees us do it or not.
@@ -31214,7 +31224,7 @@ Friend.
    <span class="noHate">
     “Gimme the rags; I can do it myself.
    </span>
-   <span class="hate">
+   <span class="noHate">
     Don’t stop now; don’t
       fool around here, and the evasion booming along so handsome; man the
       sweeps, and set her loose!
@@ -31760,7 +31770,7 @@ Friend.
       you’d think so if you’d a been in this house for a
       while back.
    </span>
-   <span class="noHate">
+   <span class="hate">
     Why, they’ve stole everything they could lay their
       hands on—and we a-watching all the time, mind you.
    </span>
@@ -31927,7 +31937,7 @@ Friend.
     “You’ll stay right
       wher’ you are; one’s enough to be lost at a time.
    </span>
-   <span class="hate">
+   <span class="noHate">
     If he ain’t here to supper, your uncle ’ll go.”
    </span>
   </p>
