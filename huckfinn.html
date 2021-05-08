@@ -100,23 +100,142 @@ pre        { font-style: italic; font-size: 90%; margin-left: 10%;}
     context to the long and storied fight to ban Huckleberry Finn. I will first
     describe what my project does, then I will provide some obervations, and I
     will conclude with some thoughts about what this means for our society.
-    <br>
+    <br><br>
+    <b>Process:</b>
+    <br><br>
+    To follow along with the code used for the data processing, click 
+    <a href="https://github.com/lukekenworthy/hateInHuck/blob/main/model.ipynb">here</a>.
     My base inspiration for the machine learning model came from 
     <a href="https://thecleverprogrammer.com/2020/08/19/hate-speech-detection-model/">this</a>
     article. Right off the bat, however, I did not think their dataset would 
     be particularly helpful for the model that I wanted to create. Their data was based
     off of tweets, and very few of those tweets contained the n-word, which is 
     important for classifying the type of hate speech that might be found in 
-    Huck Finn...
+    Huck Finn. So, after doing some digging, I found a 
+    <a href="https://github.com/Vicomtech/hate-speech-dataset">data set</a>
+    that classified whether posts on a white supremecist forum 
+    contained hate speech. Preparing this data for use in a model took some work. 
+    All of the posts existed in separate .txt files, so I had to traverse the directory to
+    store all of the text into a single dataframe. Additionally, the classification of
+    hate speech was not included directly with the file. So, I had to use the table
+    that contained all of the classifications and then join on the post id to get a "hate"/"noHate"
+    classification for each post.
+    <br><br>
+    Then, I cleaned this data by removing anything that might confuse a machine learning model,
+    like punctuation or hashtags. After doing this cleaning, I ran into another issue: even
+    on a white supremicist forum, only around 10% of the data contained hate speech.
+    While having hate speech be a minority of the dataset is a good thing for society,
+    it is a bad thing for teaching a machine learning model, because it has so few
+    samples to learn from. Thus, I used a statistical technique called upsampling,
+    where I randomly drew (with replacement) from the hate speech samples to increase
+    the size of the hate speech dataset. I did this until the "hate" and "noHate"
+    samples had the same size. I then created a simple text classification model
+    that looks at the distribution of words in a text combined with a classic computational learning technique
+    known as "stochastic gradient descent" (as an aside, this technique is super cool. It is
+    basically the main way in which machines learn right now, but it is not at all similar
+    to how humans learn. For a mildly-in-depth introduction to this technique, see 
+    <a href="https://www.youtube.com/watch?v=IHZwWFHWa-w">here</a>) and then checked 
+    out the results.
+    <br><br>
+    At this point in the project, I realized that I would need to expand my dataset. When I 
+    tested the model on various sentences in Huckleberry Finn that used the n-word,
+    it kept saying that the sentence was not hateful. Going back through the data,
+    I realized that the hate speech in the forum data was largely anti-semitic, and contained
+    few instances of the n-word. As a result, I added in some hate speech data compiled from Twitter.
+    I classified a tweet as containing hate speech when over half of the reviewers
+    said that the tweet was hateful.
+    After training the model on this full data set, I started to have some promising results.
+    On the test set (I held out 25% of the data so I could test the accuracy of the model
+    with data it was not trained on), it achieved 85.8% accuracy. The false positive rate was 37.9%,
+    while the false negative rate was 12.1%. This means that the model is a bit eager
+    to classify something as hate speech, even if it is not, though it will rarely
+    miss hate speech that it should have picked up. Given the simplicity of the model,
+    these are pretty good results. An interesting summer coding project for me might be
+    to build something more sophisticated. This could easily be substituted into
+    my project once it is built.
+    <br><br>
+    To apply my model to Huckleberry Finn on a webpage, I first downloaded the book as an HTML
+    file provided by Project Gutenberg. I then used the Python HTML parsing package, 
+    <a href="https://www.youtube.com/watch?v=IHZwWFHWa-w">Beautiful Soup</a>,
+    to walk through the book paragraph by paragraph. Starting with the opening sentence,
+    I separated the paragraph into sentences using the 
+    <a href="https://www.nltk.org">Natural Language Toolkit</a>
+    sentence tokenizer function. I gave each sentence a span tag, then ran it through my machine
+    learning model to see how it was classified. I added a class to the span tag based on its 
+    "hate"/"noHate" designation. For context, a span tag is an HTML tool that allows you 
+    to treat parts of a body of text individually for webpage styling purposes, while a class
+    allows you to stylize parts of a webpage as a group. I then created three HTML buttons (with
+    some help from 
+    <a href="https://www.w3schools.com/css/css3_buttons.asp">W3 Schools</a>). Finally, I added some
+    JavaScript code that would change the styling of the words wrapped in "hate" span tags.
+    For the "Remove Hate Speech" button, I hid all of the "hate" text, for the "Highlight
+    Hate Speech" button, I added a red highligh to all of the "hate" text, and for the 
+    "Show All Text" button, I restored the text to its original state.
+    <br><br>
+    <b>Observations:</b>
+    <br><br>
+    Without hate speech removed, the n-word shows up in Hucklberry Finn 214 times. Once you hide hate speech,
+    it shows up 33 times. Observing some of these instances, it is pretty clear that many -- if not all --
+    of them should have been classified as hate speech too. My hypothesis for this observation is that
+    a lot of the data that the model was trained on that contained the n-word came from Twitter. 
+    Examining some of these tweets, it appears that there were some cases in which the n-word 
+    was used in an arguably non-demeaning way. Furthermore, it is worth noting that, in some of
+    those instances, at least one reviewer thought the tweet was hateful even though
+    a majority did not, so there is a lot of subjectivity here. Context is one of the more
+    difficult things for a computer to learn so, with a relatively basic model, it
+    is expected that some instances would slip through the cracks.
+    <br><br>
+    There are other scenarios where the model will flag something as hate speech when it is clearly
+    not, while there are others when the flagging is understandable. This observation falls in line
+    with the high false positive rate found in testing. For example, the sentence, "And by and by they 
+    had me up to tell what I knowed" is flagged inexplicably. In the case of the sentence,
+    "Well, the woman fell to talking about how hard times was, and how poor they had to live, and how 
+    the rats was as free as if they owned the place, and so forth and so on, and then I got easy again"
+    it seems like the model picked up on the term "rats" as being used frequently in hate speech. Sure enough,
+    after checking the data on the white supremecist forum, "rats" was used there
+    as an anti-semitic term.
+    <br><br>
+    <b>Analysis:</b>
+    <br><br>
+    This project shows some of the limitations of machine learning in solving problems
+    related to hate speech. In a world where humans cannot agree on which speech
+    is hateful, forcing a machine to decide for us is a shirking of responsibility.
+    Furthermore, though my model was fairly rudimentary, it does give a demonstration 
+    of the more obvious errors that can happen when machines try to make human decisions.
+    It is very difficult for a machine to learn about context, as well as other social
+    norms that are more subtle. For this specific project, there was also a clear
+    mismatch between the training data and the text in Huckleberry Finn. Most of the
+    data that the model was trained on was produced in the last 20 years, whereas 
+    Huckleberry Finn was first published over 100 years ago.
+    <br><br>
+    This project also adds another layer of nuance to the element of context in the debate
+    over banning the American classic. Many proponents of continuing to teach Huckleberry Finn
+    say that, when properly contextualized, the racially charged language in the text
+    can lead to constructive conversations about our society rather causing harm. Many believe,
+    though, that this context is critical for the conversation to be constructive.
+    By creating an edition of Huckleberry Finn that highlighted the more racially charged language,
+    some might argue that this better contextualizes the sensitive language in the novel. Others might
+    want an edition with such language removed entirely. Opponents of these alternate editions
+    would likely criticize them for being overly paternalistic, or for changing the 
+    author's words. Creating these editions, too, would suffer from some the problems
+    discussed in the previous paragraph. I personally believe that such an edition
+    would be a poor idea because it would discourage kids from thinking critically about
+    which parts of the book are hateful, detracting from the intellectual environment
+    required to make reading Huckleberry Finn a constructive experience, both for
+    individuals, and for America.
+
+
 
   </p>
   <p><i>
-    <br><br>
+    <br><br><h2>
     Below, you will find Huck Finn as presented by Project Gutenberg, with the ability to 
-    highlight or remove hate speech.
+    highlight or remove hate speech:</h2>
     </i>
   </p>
   <br><br>
+  <hr>
+  <br>
   <div style="text-align:center; font-size:1.2em; font-weight:bold;">The Project Gutenberg eBook of Adventures of Huckleberry Finn, by Mark Twain (Samuel Clemens)</div>
 <div style="display:block;margin:1em 0">
 This eBook is for the use of anyone anywhere in the United States and
