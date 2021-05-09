@@ -7,14 +7,14 @@
 <link rel="coverpage" href="https://www.gutenberg.org/files/76/76-h/images/cover.jpg">
 <style type="text/css" xml:space="preserve">
 
-body { margin-left: 10%; margin-right: 10%; background:#faebd0; text-align:justify}
+body { margin-left: 10%; margin-right: 10%; background:#eeffff; text-align:justify}
 
 H1,H2,H3,H4,H5,H6 { text-align: center; margin-left: 15%; margin-right: 15%; }
 
 hr  { width: 50%; text-align: center;}
 
 p { text-indent: 1em; margin-top: .25em; margin-bottom: .25em; }
-
+/* #faebd0 */
 .button {
   position: fixed;
   background-color: #4CAF50; /* Green */
@@ -94,7 +94,7 @@ pre        { font-style: italic; font-size: 90%; margin-left: 10%;}
   <p> </p>
   <br><br><br><br><br><br>
   <h1>GENED 1133 Final Project: Hate Speech in Huck</h1>
-  <h5>By Luke Kenworthy</h5>
+  <h4>By Luke Kenworthy</h4>
   <p>
     In my final project, I used machine learning to provide some additional
     context to the long and storied fight to ban Huckleberry Finn. I will first
@@ -107,11 +107,11 @@ pre        { font-style: italic; font-size: 90%; margin-left: 10%;}
     <a href="https://github.com/lukekenworthy/hateInHuck/blob/main/model.ipynb">here</a>.
     My base inspiration for the machine learning model came from 
     <a href="https://thecleverprogrammer.com/2020/08/19/hate-speech-detection-model/">this</a>
-    article. Right off the bat, however, I did not think their dataset would 
-    be particularly helpful for the model that I wanted to create. Their data was based
+    article. Immediately, I did not think their dataset would 
+    be particularly helpful for the model that I wanted to create. Their data were based
     off of tweets, and very few of those tweets contained the n-word, which is 
     important for classifying the type of hate speech that might be found in 
-    Huck Finn. So, after doing some digging, I found a 
+    Huckleberry Finn. So, after doing some digging, I found a 
     <a href="https://github.com/Vicomtech/hate-speech-dataset">data set</a>
     that classified whether posts on a white supremecist forum 
     contained hate speech. Preparing this data for use in a model took some work. 
@@ -139,9 +139,10 @@ pre        { font-style: italic; font-size: 90%; margin-left: 10%;}
     <br><br>
     At this point in the project, I realized that I would need to expand my dataset. When I 
     tested the model on various sentences in Huckleberry Finn that used the n-word,
-    it kept saying that the sentence was not hateful. Going back through the data,
+    it kept saying that the sentences were not hateful. Going back through the data,
     I realized that the hate speech in the forum data was largely anti-semitic, and contained
-    few instances of the n-word. As a result, I added in some hate speech data compiled from Twitter.
+    few instances of the n-word. As a result, I added in some hate speech data compiled from Twitter,
+    making sure that a significant portion of tweets in the data set contained the n-word.
     I classified a tweet as containing hate speech when over half of the reviewers
     said that the tweet was hateful.
     After training the model on this full data set, I started to have some promising results.
@@ -151,7 +152,8 @@ pre        { font-style: italic; font-size: 90%; margin-left: 10%;}
     to classify something as hate speech, even if it is not, though it will rarely
     miss hate speech that it should have picked up. Given the simplicity of the model,
     these are pretty good results. An interesting summer coding project for me might be
-    to build something more sophisticated. This could easily be substituted into
+    to build something more sophisticated, perhaps using a neural network.
+    This model could easily be substituted into
     my project once it is built.
     <br><br>
     To apply my model to Huckleberry Finn on a webpage, I first downloaded the book as an HTML
@@ -169,7 +171,7 @@ pre        { font-style: italic; font-size: 90%; margin-left: 10%;}
     <a href="https://www.w3schools.com/css/css3_buttons.asp">W3 Schools</a>). Finally, I added some
     JavaScript code that would change the styling of the words wrapped in "hate" span tags.
     For the "Remove Hate Speech" button, I hid all of the "hate" text, for the "Highlight
-    Hate Speech" button, I added a red highligh to all of the "hate" text, and for the 
+    Hate Speech" button, I added a red highlight to all of the "hate" text, and for the 
     "Show All Text" button, I restored the text to its original state.
     <br><br>
     <b>Observations:</b>
@@ -181,54 +183,74 @@ pre        { font-style: italic; font-size: 90%; margin-left: 10%;}
     Examining some of these tweets, it appears that there were some cases in which the n-word 
     was used in an arguably non-demeaning way. Furthermore, it is worth noting that, in some of
     those instances, at least one reviewer thought the tweet was hateful even though
-    a majority did not, so there is a lot of subjectivity here. Context is one of the more
+    a majority did not, so there is a lot of subjectivity there. Context is one of the more
     difficult things for a computer to learn so, with a relatively basic model, it
-    is expected that some instances would slip through the cracks.
+    is expected that some instances would slip through the cracks. Additionally, the full version
+    of the text is 110,175 words, while the version with hate speech removed is 79,980 words.
     <br><br>
-    There are other scenarios where the model will flag something as hate speech when it is clearly
+    There are scenarios where the model will flag something as hate speech when it is clearly
     not, while there are others when the flagging is understandable. This observation falls in line
     with the high false positive rate found in testing. For example, the sentence, "And by and by they 
-    had me up to tell what I knowed" is flagged inexplicably. In the case of the sentence,
+    had me up to tell what I knowed," is flagged inexplicably. But, in the case of the sentence,
     "Well, the woman fell to talking about how hard times was, and how poor they had to live, and how 
-    the rats was as free as if they owned the place, and so forth and so on, and then I got easy again"
+    the rats was as free as if they owned the place, and so forth and so on, and then I got easy again,"
     it seems like the model picked up on the term "rats" as being used frequently in hate speech. Sure enough,
     after checking the data on the white supremecist forum, "rats" was used there
-    as an anti-semitic term.
+    as an anti-semitic term. The data from the forum probably made the model overly 
+    sensitive to words like "rats," which demonstrates a pitfall of this technique.
     <br><br>
     <b>Analysis:</b>
     <br><br>
     This project shows some of the limitations of machine learning in solving problems
     related to hate speech. In a world where humans cannot agree on which speech
     is hateful, forcing a machine to decide for us is a shirking of responsibility.
+    While machines might be able to help humans with such difficult tasks, they should
+    not take over that responsibility entirely.
     Furthermore, though my model was fairly rudimentary, it does give a demonstration 
-    of the more obvious errors that can happen when machines try to make human decisions.
-    It is very difficult for a machine to learn about context, as well as other social
-    norms that are more subtle. For this specific project, there was also a clear
-    mismatch between the training data and the text in Huckleberry Finn. Most of the
+    of the more obvious errors that can occur when machines try to make human decisions.
+    In such sensitive situations, these errors are more costly and require an emotional,
+    rational being to fix them.
+    Additionally, it is hard for a machine to learn about context, as well as other social
+    norms that are more subtle. This difficulty was displayed prominently in the examples
+    given in the previous paragraph, as well as the many others that you might find while 
+    reading through this edition of Huckleberry Finn. For this specific project, there was also a clear
+    mismatch between the training data and the text of Huckleberry Finn. Most of the
     data that the model was trained on was produced in the last 20 years, whereas 
-    Huckleberry Finn was first published over 100 years ago.
+    Huckleberry Finn was first published over 100 years ago. This mismatch makes accurate training
+    difficult, and also shows the importance of training-application congruency. There have been examples
+    of face detection algorithms having difficulty detecting black faces because there were
+    few black faces given in their training data set. In the world of big data, representation 
+    is important. Finally, the machine learning algorithm
+    also does not know the context in which the reader is reading the book. Arguably,
+    this is an important factor in determining if something should be classified as hate speech.
     <br><br>
     This project also adds another layer of nuance to the element of context in the debate
     over banning the American classic. Many proponents of continuing to teach Huckleberry Finn
     say that, when properly contextualized, the racially charged language in the text
-    can lead to constructive conversations about our society rather causing harm. Many believe,
+    can lead to constructive conversations about American society. Many believe,
     though, that this context is critical for the conversation to be constructive.
     By creating an edition of Huckleberry Finn that highlighted the more racially charged language,
     some might argue that this better contextualizes the sensitive language in the novel. Others might
     want an edition with such language removed entirely. Opponents of these alternate editions
     would likely criticize them for being overly paternalistic, or for changing the 
-    author's words. Creating these editions, too, would suffer from some the problems
-    discussed in the previous paragraph. I personally believe that such an edition
+    author's original words. Creating these editions, too, would suffer from some the problems
+    discussed in the previous paragraph; who would get to decide which parts of the book
+    are classified as hate speech? Proponents of hiding the hate speech would probably contend
+    that removing the hate speech could teach many of the valuable lessons from the book
+    without inflicting the harm that comes from those hateful words. A similar argument could
+    be made for the highlighted edition, where highlighting the terms emphasizes to young adults
+    that they are not acceptable. While largely well-intentioned, I personally believe that 
+    such a modified edition
     would be a poor idea because it would discourage kids from thinking critically about
     which parts of the book are hateful, detracting from the intellectual environment
     required to make reading Huckleberry Finn a constructive experience, both for
-    individuals, and for America.
+    individuals, and for our society.
 
 
 
   </p>
   <p><i>
-    <br><br><h2>
+    <br><br><h2 style="color: red;">
     Below, you will find Huck Finn as presented by Project Gutenberg, with the ability to 
     highlight or remove hate speech:</h2>
     </i>
@@ -304,200 +326,8 @@ country where you are located before using this eBook.
     <p>
       <br> <br> <br>
     </p>
-    <h2>
-      CONTENTS.
-    </h2>
-    <p>
-      <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c1">CHAPTER I.</a><br> Civilizing Huck.—Miss Watson.—Tom
-      Sawyer Waits.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c2">CHAPTER II.</a><br> The Boys
-      Escape Jim.—Torn Sawyer’s Gang.—Deep-laid Plans.<br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c3">CHAPTER III.</a><br> A Good Going-over.—Grace
-      Triumphant.—“One of Tom Sawyers’s Lies”.<br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c4">CHAPTER IV.</a><br> Huck and the Judge.—Superstition.<br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c5">CHAPTER V.</a><br> Huck’s Father.—The
-      Fond Parent.—Reform.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c6">CHAPTER VI.</a><br>
-      He Went for Judge Thatcher.—Huck Decided to Leave.—Political<br>
-      Economy.—Thrashing Around.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c7">CHAPTER VII.</a><br>
-      Laying for Him.—Locked in the Cabin.—Sinking the Body.—Resting.<br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c8">CHAPTER VIII.</a><br> Sleeping in the Woods.—Raising
-      the Dead.—Exploring the Island.—Finding<br> Jim.—Jim’s
-      Escape.—Signs.—Balum.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c9">CHAPTER IX.</a><br>
-      The Cave.—The Floating House.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c10">CHAPTER X.</a><br>
-      The Find.—Old Hank Bunker.—In Disguise.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c11">CHAPTER XI.</a><br> Huck and the Woman.—The Search.—Prevarication.—Going
-      to Goshen.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c12">CHAPTER XII.</a><br> Slow
-      Navigation.—Borrowing Things.—Boarding the Wreck.—The<br>
-      Plotters.—Hunting for the Boat.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c13">CHAPTER
-      XIII.</a><br> Escaping from the Wreck.—The Watchman.—Sinking.<br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c14">CHAPTER XIV.</a><br> A General Good Time.—The
-      Harem.—French.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c15">CHAPTER XV.</a><br> Huck
-      Loses the Raft.—In the Fog.—Huck Finds the Raft.—Trash.<br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c16">CHAPTER XVI.</a><br> Expectation.—A White Lie.—Floating
-      Currency.—Running by<br> Cairo.—Swimming Ashore.<br> <br>
-      <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c17">CHAPTER XVII.</a><br> An Evening Call.—The Farm in
-      Arkansaw.—Interior Decorations.—Stephen<br> Dowling Bots.—Poetical
-      Effusions.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c18">CHAPTER XVIII.</a><br> Col.
-      Grangerford.—Aristocracy.—Feuds.—The Testament.—Recovering
-      the<br> Raft.—The Wood—pile.—Pork and Cabbage.<br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c19">CHAPTER XIX.</a><br> Tying Up Day—times.—An
-      Astronomical Theory.—Running a Temperance<br> Revival.—The
-      Duke of Bridgewater.—The Troubles of Royalty.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c20">CHAPTER XX.</a><br> Huck Explains.—Laying Out a
-      Campaign.—Working the Camp—meeting.—A<br> Pirate at the
-      Camp—meeting.—The Duke as a Printer.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c21">CHAPTER
-      XXI.</a><br> Sword Exercise.—Hamlet’s Soliloquy.—They
-      Loafed Around Town.—A Lazy<br> Town.—Old Boggs.—Dead.<br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c22">CHAPTER XXII.</a><br> Sherburn.—Attending the
-      Circus.—Intoxication in the Ring.—The<br> Thrilling Tragedy.<br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c23">CHAPTER XXIII.</a><br> Sold.—Royal
-      Comparisons.—Jim Gets Home-sick.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c24">CHAPTER
-      XXIV.</a><br> Jim in Royal Robes.—They Take a Passenger.—Getting
-      Information.—Family<br> Grief.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c25">CHAPTER
-      XXV.</a><br> Is It Them?—Singing the “Doxologer.”—Awful
-      Square—Funeral Orgies.—A<br> Bad Investment .<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c26">CHAPTER XXVI.</a><br> A Pious King.—The King’s
-      Clergy.—She Asked His Pardon.—Hiding in the<br> Room.—Huck
-      Takes the Money.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c27">CHAPTER XXVII.</a><br> The
-      Funeral.—Satisfying Curiosity.—Suspicious of Huck,—Quick
-      Sales and<br> Small.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c28">CHAPTER XXVIII.</a><br>
-      The Trip to England.—“The Brute!”—Mary Jane
-      Decides to Leave.—Huck<br> Parting with Mary Jane.—Mumps.—The
-      Opposition Line.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c29">CHAPTER XXIX.</a><br>
-      Contested Relationship.—The King Explains the Loss.—A Question
-      of<br> Handwriting.—Digging up the Corpse.—Huck Escapes.<br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c30">CHAPTER XXX.</a><br> The King Went for Him.—A
-      Royal Row.—Powerful Mellow.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c31">CHAPTER XXXI.</a><br>
-      Ominous Plans.—News from Jim.—Old Recollections.—A Sheep<br>
-      Story.—Valuable Information.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c32">CHAPTER
-      XXXII.</a><br> Still and Sunday—like.—Mistaken Identity.—Up
-      a Stump.—In a Dilemma.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c33">CHAPTER XXXIII.</a><br>
-      A Nigger Stealer.—Southern Hospitality.—A Pretty Long
-      Blessing.—Tar<br> and Feathers.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c34">CHAPTER
-      XXXIV.</a><br> The Hut by the Ash Hopper.—Outrageous.—Climbing
-      the Lightning<br> Rod.—Troubled with Witches.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c35">CHAPTER XXXV.</a><br> Escaping Properly.—Dark Schemes.—Discrimination
-      in Stealing.—A Deep<br> Hole.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c36">CHAPTER
-      XXXVI.</a><br> The Lightning Rod.—His Level Best.—A Bequest
-      to Posterity.—A High<br> Figure.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c37">CHAPTER
-      XXXVII.</a><br> The Last Shirt.—Mooning Around.—Sailing
-      Orders.—The Witch Pie.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c38">CHAPTER XXXVIII.</a><br>
-      The Coat of Arms.—A Skilled Superintendent.—Unpleasant Glory.—A<br>
-      Tearful Subject.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c39">CHAPTER XXXIX.</a><br> Rats.—Lively
-      Bed—fellows.—The Straw Dummy.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c40">CHAPTER
-      XL.</a><br> Fishing.—The Vigilance Committee.—A Lively Run.—Jim
-      Advises a Doctor.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c41">CHAPTER XLI.</a><br> The
-      Doctor.—Uncle Silas.—Sister Hotchkiss.—Aunt Sally in
-      Trouble.<br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c42">CHAPTER XLII.</a><br> Tom Sawyer
-      Wounded.—The Doctor’s Story.—Tom Confesses.—Aunt
-      Polly<br> Arrives.—Hand Out Them Letters.<br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c43">CHAPTER THE LAST.</a><br> Out of Bondage.—Paying
-      the Captive.—Yours Truly, Huck Finn.<br> <br> <br> <br> <br>
-      <br>
-    </p>
-    <h2>
-      ILLUSTRATIONS.
-    </h2>
-
-    <p>
-      <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c01-02">The
-      Widows</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c01-18">Moses and the “Bulrushers”</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c01-19">Miss Watson</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c01-21">Huck
-      Stealing Away</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c02-22">They Tip-toed Along</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c02-24">Jim</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c02-25">Tom Sawyer’s
-      Band of Robbers</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c02-28">Huck Creeps
-      into his Window</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c03-29">Miss Watson’s
-      Lecture</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c03-31">The Robbers Dispersed</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c03-33">Rubbing the Lamp</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c04-34">!
-      ! ! !</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c04-36">Judge Thatcher surprised</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c04-37">Jim Listening</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c05-39">“Pap”</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c05-41">Huck and his Father</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c05-43">Reforming the Drunkard</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c05-44">Falling
-      from Grace</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c06-45">Getting out of the Way</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c06-46">Solid Comfort</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c06-48">Thinking
-      it Over</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c06-51">Raising a Howl</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c07-53">“Git Up”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c07-54">The Shanty</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c07-56">Shooting the Pig</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c07-59">Taking
-      a Rest</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c08-61">In the Woods</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c08-63">Watching the Boat</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c08-64">Discovering
-      the Camp Fire</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c08-67">Jim and the Ghost</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c08-72">Misto Bradish’s Nigger</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c09-74">Exploring the Cave</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c09-75">In the
-      Cave</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c09-77">Jim sees a Dead Man</a><br> <br>
-      <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c10-79">They Found Eight Dollars</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c10-80">Jim
-      and the Snake</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c10-81">Old Hank Bunker</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c10-82">“A Fair Fit”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c11-84">“Come
-      In”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c11-87">“Him and another Man”</a><br> <br>
-      <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c11-90">She puts up a Snack</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c11-91">“Hump
-      Yourself”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c12-093">On the Raft</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c12-095">He sometimes Lifted a Chicken</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c12-098">“Please don’t, Bill”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c12-100">“It ain’t Good Morals”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c12-101">“Oh! Lordy, Lordy!”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c13-102">In
-      a Fix</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c13-104">“Hello, What’s Up?”</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c13-107">The Wreck</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c13-108">We
-      turned in and Slept</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c14-109">Turning over the
-      Truck</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c14-110">Solomon and his Million Wives</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c14-112">The story of “Sollermun”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c15-115">“We Would Sell the Raft”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c15-117">Among
-      the Snags</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c15-118">Asleep on the Raft</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c16-122">“Something being Raftsman”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c16-126">“Boy, that’s a Lie”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c16-127">“Here
-      I is, Huck”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c16-131">Climbing up the Bank</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c17-132">“Who’s There?”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c17-134">“Buck”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c17-138">“It made Her look
-      Spidery”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c17-140">“They got him out and emptied
-      Him”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c17-142">The House</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c18-143">Col. Grangerford</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c18-145">Young
-      Harney Shepherdson</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c18-146">Miss Charlotte</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c18-149">“And asked me if I Liked Her”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c18-153">“Behind the Wood-pile”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c19-157">Hiding
-      Day-times</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c19-160">“And Dogs a-Coming”</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c19-163">“By rights I am a Duke!”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c19-165">“I am the Late Dauphin”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c19-166">Tail
-      Piece</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c20-167">On the Raft</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c20-170">The King as Juliet</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c20-172">“Courting
-      on the Sly”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c20-174">“A Pirate for Thirty Years”</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c20-175">Another little Job</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c21-177">Practizing</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c21-178">Hamlet’s
-      Soliloquy</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c21-182">“Gimme a Chaw”</a><br> <br>
-      <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c21-185">A Little Monthly Drunk</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c21-187">The
-      Death of Boggs</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c22-189">Sherburn steps out</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c22-191">A Dead Head</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c22-193">He
-      shed Seventeen Suits</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c23-196">Tragedy</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c23-198">Their Pockets Bulged</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c23-200">Henry the Eighth in Boston Harbor</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c24-203">Harmless</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c24-205">Adolphus</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c24-207">He fairly emptied that Young Fellow</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c24-209">“Alas, our Poor Brother”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c25-211">“You Bet it is”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c25-212">Leaking</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c25-215">Making up the “Deffisit”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c25-216">Going for him</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c25-218">The Doctor</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c25-219">The Bag of Money</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c26-220">The
-      Cubby</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c26-221">Supper with the Hare-Lip</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c26-224">Honest Injun</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c26-226">The
-      Duke looks under the Bed</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c26-229">Huck takes the
-      Money</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c27-230">A Crack in the Dining-room Door</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c27-232">The Undertaker</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c27-233">“He
-      had a Rat!”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c27-235">“Was you in my Room?”</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c27-237">Jawing</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c28-239">In
-      Trouble</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c28-241">Indignation</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c28-242">How to Find Them</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c28-244">He
-      Wrote</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c28-246">Hannah with the Mumps</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c28-248">The Auction</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c29-250">The
-      True Brothers</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c29-252">The Doctor leads Huck</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c29-255">The Duke Wrote</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c29-257">“Gentlemen,
-      Gentlemen!”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c29-260">“Jim Lit Out”</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c30-261">The King shakes Huck</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c30-263">The Duke went for Him</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c31-266">Spanish
-      Moss</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c31-269">“Who Nailed Him?”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c31-271">Thinking</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c31-274">He gave him Ten
-      Cents</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c31-275">Striking for the Back Country</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c32-277">Still and Sunday-like</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c32-279">She hugged him tight</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c32-283">“Who
-      do you reckon it is?”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c33-284">“It was Tom
-      Sawyer”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c33-287">“Mr. Archibald Nichols, I
-      presume?”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c33-290">A pretty long Blessing</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c33-291">Traveling By Rail</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c34-293">Vittles</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c34-296">A Simple Job</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c34-299">Witches</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c35-300">Getting
-      Wood</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c35-302">One of the Best Authorities</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c35-305">The Breakfast-Horn</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c35-307">Smouching the Knives</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c36-309">Going
-      down the Lightning-Rod</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c36-311">Stealing spoons</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c36-314">Tom advises a Witch Pie</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c37-316">The Rubbage-Pile</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c37-318">“Missus,
-      dey’s a Sheet Gone”</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c37-321">In a Tearing
-      Way</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c37-322">One of his Ancestors</a><br> <br>
-      <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c38-324">Jim’s Coat of Arms</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c38-327">A Tough Job</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c38-329">Buttons on
-      their Tails</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c38-331">Irrigation</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c39-333">Keeping off Dull Times</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c39-335">Sawdust
-      Diet</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c39-337">Trouble is Brewing</a><br> <br>
-      <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c40-339">Fishing</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c40-341">Every one had
-      a Gun</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c40-343">Tom caught on a Splinter</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c40-345">Jim advises a Doctor</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c41-347">The Doctor</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c41-348">Uncle Silas
-      in Danger</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c41-350">Old Mrs. Hotchkiss</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c41-353">Aunt Sally talks to Huck</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c42-355">Tom Sawyer wounded</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c42-357">The
-      Doctor speaks for Jim</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c42-361">Tom rose square up
-      in Bed</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c42-362">“Hand out them Letters”</a><br>
-      <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c43-364">Out of Bondage</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c43-365">Tom’s
-      Liberality</a><br> <br> <a href="https://www.gutenberg.org/files/76/76-h/76-h.htm#c43-366">Yours Truly</a><br> <br>
-      <br> <br> <br> <br>
-    </p>
-    <div class="fig" style="width:60%">
-      <img alt="notice.jpg (24K)" src="./The Project Gutenberg eBook of Adventures of Huckleberry Finn, By Mark Twain_files/notice.jpg" style="width:100%;"><br>
-    </div>
-    <p>
-      <br> <br> <br> <br> <br> <br> <br>
-    </p>
+    
+    
     <p>
       EXPLANATORY
     </p>
