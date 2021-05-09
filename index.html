@@ -3,7 +3,7 @@
 <!-- saved from url=(0048)https://www.gutenberg.org/files/76/76-h/76-h.htm -->
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
 <meta content="text/css" http-equiv="Content-Style-Type"/>
-<title>The Project Gutenberg eBook of Adventures of Huckleberry Finn, By Mark Twain</title>
+<title>Hate Speech in Huck</title>
 <link href="https://www.gutenberg.org/files/76/76-h/images/cover.jpg" rel="coverpage"/>
 <style type="text/css" xml:space="preserve">
 
@@ -105,7 +105,9 @@ pre        { font-style: italic; font-size: 90%; margin-left: 10%;}
 <b>Process:</b>
 <br/><br/>
     To follow along with the code used for the data processing, click 
-    <a href="https://github.com/lukekenworthy/hateInHuck/blob/main/model.ipynb">here</a>.
+    <a href="https://github.com/lukekenworthy/hateInHuck/blob/main/model.ipynb">here</a>;
+    I included annotations for each code cell so non-technical readers can kind of
+    follow along with what is going on.
     My base inspiration for the machine learning model came from 
     <a href="https://thecleverprogrammer.com/2020/08/19/hate-speech-detection-model/">this</a> article.
     Immediately, I did not think their dataset would 
@@ -671,7 +673,7 @@ country where you are located before using this eBook.
       be, too—eating up everything, and always trying to get loose.” </span></p>
 <p><span class="noHate">“How you talk, Ben Rogers. </span><span class="hate">How can they get loose when there’s
       a guard over them, ready to shoot them down if they move a peg?” </span></p>
-<p><span class="noHate">“A guard! </span><span class="noHate">Well, that is good. </span><span class="noHate">So somebody’s
+<p><span class="noHate">“A guard! </span><span class="noHate">Well, that is good. </span><span class="hate">So somebody’s
       got to set up all night and never get any sleep, just so as to watch them. </span><span class="noHate">I think that’s foolishness. </span><span class="noHate">Why can’t a body take a club
       and ransom them as soon as they get here?” </span></p>
 <p><span class="noHate">“Because it ain’t in the books so—that’s why. </span><span class="noHate">Now, Ben Rogers, do you want to do things regular, or don’t
@@ -1490,7 +1492,7 @@ country where you are located before using this eBook.
       considerable a-doing it. </span><span class="hate">I fetched the pig in, and took him back
       nearly to the table and hacked into his throat with the axe, and laid him
       down on the ground to bleed; I say ground because it was ground—hard
-      packed, and no boards. </span><span class="hate">Well, next I took an old sack and put a lot
+      packed, and no boards. </span><span class="noHate">Well, next I took an old sack and put a lot
       of big rocks in it—all I could drag—and I started it from the
       pig, and dragged it to the door and through the woods down to the river
       and dumped it in, and down it sunk, out of sight. </span><span class="noHate">You could easy see
@@ -1682,7 +1684,7 @@ country where you are located before using this eBook.
       long. </span><span class="noHate">I judged they had got to the foot, and was giving it up. </span><span class="noHate">But they didn’t yet a while. </span><span class="noHate">They turned around the foot
       of the island and started up the channel on the Missouri side, under
       steam, and booming once in a while as they went. </span><span class="noHate">I crossed over to
-      that side and watched them. </span><span class="hate">When they got abreast the head of the island
+      that side and watched them. </span><span class="noHate">When they got abreast the head of the island
       they quit shooting and dropped over to the Missouri shore and went home to
       the town. </span></p>
 <p><span class="noHate">I knowed I was all right now. </span><span class="noHate">Nobody else would come a-hunting after
@@ -1741,7 +1743,7 @@ country where you are located before using this eBook.
       Illinois bank—about a quarter of a mile. </span><span class="noHate">I went out in the
       woods and cooked a supper, and I had about made up my mind I would stay
       there all night when I hear a plunkety-plunk, plunkety-plunk, and
-      says to myself, horses coming; and next I hear people’s voices. </span><span class="hate">I got everything into the canoe as quick as I could, and then went
+      says to myself, horses coming; and next I hear people’s voices. </span><span class="noHate">I got everything into the canoe as quick as I could, and then went
       creeping through the woods to see what I could find out. </span><span class="noHate">I hadn’t
       got far when I hear a man say: </span></p>
 <p><span class="noHate">“We better camp here if we can find a good place; the horses is
@@ -1778,7 +1780,7 @@ country where you are located before using this eBook.
 <p><span class="noHate">“Hello, Jim!” and skipped out. </span></p>
 <p><span class="noHate">He bounced up and stared at me wild. </span><span class="noHate">Then he drops down on his
       knees, and puts his hands together and says: </span></p>
-<p><span class="noHate">“Doan’ hurt me—don’t! </span><span class="hate">I hain’t ever
+<p><span class="noHate">“Doan’ hurt me—don’t! </span><span class="noHate">I hain’t ever
       done no harm to a ghos’. </span><span class="noHate">I alwuz liked dead people, en done
       all I could for ’em. </span><span class="noHate">You go en git in de river agin, whah you
       b’longs, en doan’ do nuffn to Ole Jim, ’at ’uz
@@ -1963,7 +1965,7 @@ country where you are located before using this eBook.
       dollar would git fo’ dollars mo’ at de en’ er de year. </span><span class="noHate">Well, all de niggers went in, but dey didn’t have much. </span><span class="noHate">I
       wuz de on’y one dat had much. </span><span class="noHate">So I stuck out for mo’ dan
       fo’ dollars, en I said ’f I didn’ git it I’d start
-      a bank mysef. </span><span class="noHate">Well, o’ course dat nigger want’ to keep me out
+      a bank mysef. </span><span class="hate">Well, o’ course dat nigger want’ to keep me out
       er de business, bekase he says dey warn’t business ’nough for
       two banks, so he say I could put in my five dollars en he pay me
       thirty-five at de en’ er de year. </span></p>
@@ -2549,7 +2551,7 @@ country where you are located before using this eBook.
       come along we was going to take to the canoe and break for the Illinois
       shore; and it was well a boat didn’t come, for we hadn’t ever
       thought to put the gun in the canoe, or a fishing-line, or anything to
-      eat. </span><span class="noHate">We was in ruther too much of a sweat to think of so many
+      eat. </span><span class="hate">We was in ruther too much of a sweat to think of so many
       things. </span><span class="noHate">It warn’t good judgment to put everything on
       the raft. </span></p>
 <p><span class="noHate">If the men went to the island I just expect they found the camp fire I
@@ -2897,7 +2899,7 @@ country where you are located before using this eBook.
 <p><span class="noHate">I says: </span></p>
 <p><span class="noHate">“Pap, and mam, and sis, and—” </span></p>
 <p><span class="noHate">Then I broke down. </span><span class="noHate">He says: </span></p>
-<p><span class="noHate">“Oh, dang it now, don’t take on so; we all has to have
+<p><span class="hate">“Oh, dang it now, don’t take on so; we all has to have
       our troubles, and this ’n ’ll come out all right. </span><span class="noHate">What’s
       the matter with ’em?” </span></p>
 <p><span class="hate">“They’re—they’re—are you the watchman of the
@@ -3692,7 +3694,7 @@ country where you are located before using this eBook.
       long time in getting over. </span><span class="noHate">I made a safe landing, and clumb up the
       bank. </span><span class="noHate">I couldn’t see but a little ways, but I went poking along over
       rough ground for a quarter of a mile or more, and then I run across a big
-      old-fashioned double log-house before I noticed it. </span><span class="hate">I was going to
+      old-fashioned double log-house before I noticed it. </span><span class="noHate">I was going to
       rush by and get away, but a lot of dogs jumped out and went to howling and
       barking at me, and I knowed better than to move another peg. </span></p>
 <p></p>
@@ -4447,7 +4449,7 @@ country where you are located before using this eBook.
 </div>
 <p><span class="noHate">CHAPTER XIX. </span></p>
 <p><span class="noHate">Two or three days and nights went by; I reckon I might say they swum by,
-      they slid along so quiet and smooth and lovely. </span><span class="noHate">Here is the way we
+      they slid along so quiet and smooth and lovely. </span><span class="hate">Here is the way we
       put in the time. </span><span class="noHate">It was a monstrous big river down there—sometimes
       a mile and a half wide; we run nights, and laid up and hid daytimes; soon
       as night was most gone we stopped navigating and tied up—nearly
@@ -4516,7 +4518,7 @@ country where you are located before using this eBook.
       it would have took too long to make so many. </span><span class="noHate">Jim said the
       moon could a laid them; well, that looked kind of reasonable, so I
       didn’t say nothing against it, because I’ve seen a frog lay
-      most as many, so of course it could be done. </span><span class="noHate">We used to watch the stars
+      most as many, so of course it could be done. </span><span class="hate">We used to watch the stars
       that fell, too, and see them streak down. </span><span class="noHate">Jim allowed they’d
       got spoiled and was hove out of the nest. </span></p>
 <p><span class="hate">Once or twice of a night we would see a steamboat slipping along in the
@@ -6071,7 +6073,7 @@ dont know Arkansaw!” </span></p>
       that damp I never see anything like it. </span><span class="hate">Then one of them got on one side
       of the coffin, and t’other on t’other side, and they kneeled
       down and rested their foreheads on the coffin, and let on to pray all to
-      themselves. </span><span class="noHate">Well, when it come to that it worked the crowd like you
+      themselves. </span><span class="hate">Well, when it come to that it worked the crowd like you
       never see anything like it, and everybody broke down and went to sobbing
       right out loud—the poor girls, too; and every woman, nearly, went up
       to the girls, without saying a word, and kissed them, solemn, on the
@@ -6229,7 +6231,7 @@ dont know Arkansaw!” </span></p>
       tomorrow we want all to come—everybody; for he respected
       everybody, he liked everybody, and so it’s fitten that his funeral
       orgies sh’d be public.” </span></p>
-<p><span class="hate">And so he went a-mooning on and on, liking to hear himself talk, and every
+<p><span class="noHate">And so he went a-mooning on and on, liking to hear himself talk, and every
       little while he fetched in his funeral orgies again, till the duke he
       couldn’t stand it no more; so he writes on a little scrap of paper,
       “Obsequies, you old fool,” and folds it up, and goes to
@@ -6618,7 +6620,7 @@ dont know Arkansaw!” </span></p>
       open; but I see there warn’t nobody in there but the remainders of
       Peter; so I shoved on by; but the front door was locked, and the key wasn’t
       there. </span><span class="noHate">Just then I heard somebody coming down the stairs, back
-      behind me. </span><span class="noHate">I run in the parlor and took a swift look around, and the
+      behind me. </span><span class="hate">I run in the parlor and took a swift look around, and the
       only place I see to hide the bag was in the coffin. </span><span class="noHate">The lid was
       shoved along about a foot, showing the dead man’s face down in
       there, with a wet cloth over it, and his shroud on. </span><span class="noHate">I tucked the
@@ -6702,7 +6704,7 @@ dont know Arkansaw!” </span></p>
       sides of the room, and then rose up, and shaded his mouth with his hands,
       and stretched his neck out towards the preacher, over the people’s
       heads, and says, in a kind of a coarse whisper, “He had a rat!”
-      Then he drooped down and glided along the wall again to his place. </span><span class="hate">You could see it was a great satisfaction to the people, because
+      Then he drooped down and glided along the wall again to his place. </span><span class="noHate">You could see it was a great satisfaction to the people, because
       naturally they wanted to know. </span><span class="noHate">A little thing like that don’t
       cost nothing, and it’s just the little things that makes a man to be
       looked up to and liked. </span><span class="noHate">There warn’t no more popular man in
@@ -7004,7 +7006,7 @@ dont know Arkansaw!” </span></p>
 <p><span class="noHate">“What did you reckon I wanted you to go at all for, Miss Mary?” </span></p>
 <p><span class="noHate">“Well, I never thought—and come to think, I don’t know. </span><span class="noHate">What was it?” </span></p>
 <p><span class="noHate">“Why, it’s because you ain’t one of these leather-face
-      people. </span><span class="noHate">I don’t want no better book than what your face is. </span><span class="noHate">A body can set down and read it off like coarse print. </span><span class="hate">Do you
+      people. </span><span class="noHate">I don’t want no better book than what your face is. </span><span class="noHate">A body can set down and read it off like coarse print. </span><span class="noHate">Do you
       reckon you can go and face your uncles when they come to kiss you
       good-morning, and never—” </span></p>
 <p><span class="noHate">“There, there, don’t! </span><span class="noHate">Yes, I’ll go before
@@ -7238,7 +7240,7 @@ dont know Arkansaw!” </span></p>
       got one hand to work them with. </span><span class="hate">We are who we say we are; and in a
       day or two, when I get the baggage, I can prove it. </span><span class="noHate">But up till then I won’t
       say nothing more, but go to the hotel and wait.” </span></p>
-<p><span class="noHate">So him and the new dummy started off; and the king he laughs, and blethers
+<p><span class="hate">So him and the new dummy started off; and the king he laughs, and blethers
       out: </span></p>
 <p><span class="noHate">“Broke his arm—very likely, ain’t it?—and
       very convenient, too, for a fraud that’s got to make signs, and ain’t
@@ -7462,7 +7464,7 @@ dont know Arkansaw!” </span></p>
 <p><span class="noHate">“We’ll do it!” they all shouted; “and if we don’t
       find them marks we’ll lynch the whole gang!” </span></p>
 <p><span class="noHate">I was scared, now, I tell you. </span><span class="noHate">But there warn’t no
-      getting away, you know. </span><span class="hate">They gripped us all, and marched us right along,
+      getting away, you know. </span><span class="noHate">They gripped us all, and marched us right along,
       straight for the graveyard, which was a mile and a half down the river,
       and the whole town at our heels, for we made noise enough, and it was only
       nine in the evening. </span></p>
@@ -8206,7 +8208,7 @@ dont know Arkansaw!” </span></p>
       they froze to me for two hours; and at last, when my chin was so tired it
       couldn’t hardly go any more, I had told them more about my family—I
       mean the Sawyer family—than ever happened to any six Sawyer
-      families. </span><span class="hate">And I explained all about how we blowed out a
+      families. </span><span class="noHate">And I explained all about how we blowed out a
       cylinder-head at the mouth of White River, and it took us three days to
       fix it. </span><span class="noHate">Which was all right, and worked first-rate; because they
       didn’t know but what it would take three days to fix it. </span><span class="noHate">If I’d
@@ -8219,7 +8221,7 @@ dont know Arkansaw!” </span></p>
       here any minute, and sings out my name before I can throw him a wink to
       keep quiet? </span></p>
 <p><span class="noHate">Well, I couldn’t have it that way; it wouldn’t do at
-      all. </span><span class="noHate">I must go up the road and waylay him. </span><span class="hate">So I told the folks
+      all. </span><span class="noHate">I must go up the road and waylay him. </span><span class="noHate">So I told the folks
       I reckoned I would go up to the town and fetch down my baggage. </span><span class="noHate">The
       old gentleman was for going along with me, but I said no, I could drive
       the horse myself, and I druther he wouldn’t take no trouble about
@@ -8284,7 +8286,7 @@ dont know Arkansaw!” </span></p>
       believe it. </span><span class="noHate">Tom Sawyer a nigger-stealer! </span></p>
 <p><span class="noHate">“Oh, shucks!” I says; “you’re joking.” </span></p>
 <p><span class="noHate">“I ain’t joking, either.” </span></p>
-<p><span class="noHate">“Well, then,” I says, “joking or no joking, if you hear
+<p><span class="hate">“Well, then,” I says, “joking or no joking, if you hear
       anything said about a runaway nigger, don’t forget to remember that
       you don’t know nothing about him, and I don’t know
       nothing about him.” </span></p>
@@ -8321,7 +8323,7 @@ dont know Arkansaw!” </span></p>
       circumstances it warn’t no trouble to him to throw in an amount of
       style that was suitable. </span><span class="noHate">He warn’t a boy to meeky along up
       that yard like a sheep; no, he come ca’m and important, like the
-      ram. </span><span class="hate">When he got a-front of us he lifts his hat ever so gracious and
+      ram. </span><span class="noHate">When he got a-front of us he lifts his hat ever so gracious and
       dainty, like it was the lid of a box that had butterflies asleep in it and
       he didn’t want to disturb them, and says: </span></p>
 <p><span class="noHate">“Mr. </span><span class="noHate">Archibald Nichols, I presume?” </span></p>
@@ -8661,7 +8663,7 @@ dont know Arkansaw!” </span></p>
 <p><span class="noHate">Of course there warn’t nothing to be said but the one thing; so I
       says: </span></p>
 <p><span class="noHate">“No; I ain’t heard nobody say nothing.” </span></p>
-<p><span class="noHate">Then he turns to Jim, and looks him over like he never see him before, and
+<p><span class="hate">Then he turns to Jim, and looks him over like he never see him before, and
       says: </span></p>
 <p><span class="noHate">“Did you sing out?” </span></p>
 <p><span class="noHate">“No, sah,” says Jim; “I hain’t said nothing, sah.” </span></p>
@@ -8904,7 +8906,7 @@ dont know Arkansaw!” </span></p>
       shovels, and all the modern conveniences in his wardrobe to dig himself
       out with? </span><span class="hate">Now I want to ask you—if you got any reasonableness
       in you at all—what kind of a show would that give him to be a
-      hero? </span><span class="hate">Why, they might as well lend him the key and done with it. </span><span class="noHate">Picks and shovels—why, they wouldn’t furnish ’em
+      hero? </span><span class="noHate">Why, they might as well lend him the key and done with it. </span><span class="noHate">Picks and shovels—why, they wouldn’t furnish ’em
       to a king.” </span></p>
 <p><span class="noHate">“Well, then,” I says, “if we don’t want the picks
       and shovels, what do we want?” </span></p>
@@ -9303,7 +9305,7 @@ dont know Arkansaw!” </span></p>
       Tom says: </span></p>
 <p><span class="noHate">“Why, Aunt Sally, there ain’t but nine spoons yet.” </span></p>
 <p><span class="noHate">She says: </span></p>
-<p><span class="hate">“Go ’long to your play, and don’t bother me. </span><span class="noHate">I
+<p><span class="noHate">“Go ’long to your play, and don’t bother me. </span><span class="noHate">I
       know better, I counted ’m myself.” </span></p>
 <p><span class="noHate">“Well, I’ve counted them twice, Aunty, and I can’t make
       but nine.” </span></p>
@@ -9704,7 +9706,7 @@ dont know Arkansaw!” </span></p>
       allowed these lickings warn’t nothing to what she would do if we
       ever loaded up the place again with them. </span><span class="noHate">I didn’t mind the
       lickings, because they didn’t amount to nothing; but I minded the
-      trouble we had to lay in another lot. </span><span class="noHate">But we got them laid in, and
+      trouble we had to lay in another lot. </span><span class="hate">But we got them laid in, and
       all the other things; and you never see a cabin as blithesome as Jim’s
       was when they’d all swarm out for music and go for him. </span><span class="noHate">Jim
       didn’t like the spiders, and the spiders didn’t like Jim; and
@@ -10193,7 +10195,7 @@ Friend. </span></p>
 <p><span class="hate">“Why, dog my cats, they must a ben a house-full o’ niggers in
       there every night for four weeks to a done all that work, Sister Phelps. </span><span class="noHate">Look at that shirt—every last inch of it kivered over with
       secret African writ’n done with blood! </span><span class="noHate">Must a ben a raft uv
-      ’m at it right along, all the time, amost. </span><span class="hate">Why, I’d give
+      ’m at it right along, all the time, amost. </span><span class="noHate">Why, I’d give
       two dollars to have it read to me; ’n’ as for the niggers that
       wrote it, I ’low I’d take ’n’ lash ’m t’ll—” </span></p>
 <p><span class="noHate">“People to help him, Brother Marples! </span><span class="noHate">Well, I reckon
